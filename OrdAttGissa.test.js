@@ -8,8 +8,8 @@ import hemligtOrd from "./OrdAttGissa.js";
 //Om inget ord uppfyller kriterierna ska spelaren noteras om detta
 
 describe("Visa ord att gissa", () => {
-  it("Kontrollera att kan hitta ord med bokstav som förekommer mer än en gång", () => {
-    const lista = [
+  it("Kontrollera att sorterar ord på längd", () => {
+    const ord = [
       "ja",
       "nej",
       "också",
@@ -22,8 +22,22 @@ describe("Visa ord att gissa", () => {
       "titta",
     ];
 
-    const svar = hemligtOrd(lista, 4, false);
+    const svar = hemligtOrd(ord, 4, false);
 
-    expect(svar).toEqual(["alla"]);
+    expect(svar).toHaveLength(4);
+  });
+  it("Kontrollera att sorterat bort ord med återkommande bokstav", () => {
+    const ord = ["alla", "anna"];
+
+    const svar = hemligtOrd(ord, 4, false);
+
+    expect(svar).toBe(false);
+  });
+  it("Kontrollera att omvandlar till gemener", () => {
+    const ord = ["BoRt"];
+
+    const svar = hemligtOrd(ord, 4, false);
+
+    expect(svar).toEqual("bort");
   });
 });

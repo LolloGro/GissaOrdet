@@ -1,5 +1,3 @@
-hemligtOrd(lista, antal, upprepning);
-
 function hemligtOrd(ord, antal, upprepning) {
   const listaOrd = ord;
   const antalBokstäver = antal;
@@ -40,7 +38,7 @@ function hemligtOrd(ord, antal, upprepning) {
     } else {
       const randomWord = newLista[Math.floor(Math.random() * newLista.length)];
 
-      return randomWord;
+      return randomWord.toLowerCase();
     }
   } else {
     if (sortedList == 0) {
@@ -49,7 +47,7 @@ function hemligtOrd(ord, antal, upprepning) {
       const randomWordSecond =
         sortedList[Math.floor(Math.random() * sortedList.length)];
 
-      return randomWordSecond;
+      return randomWordSecond.toLowerCase();
     }
   }
 }
