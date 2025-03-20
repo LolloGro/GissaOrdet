@@ -13,8 +13,9 @@ function hemligtOrd(ord, antal, upprepning) {
     }
   });
 
-  //Kontrollera om samma boksav får finnas flera gånger
-  const svara = [];
+  //Kontrollera om samma bokstav får finnas flera gånger
+
+  const remove = [];
 
   if (dubblaBokstäver == false) {
     for (let i = 0; i < sortedList.length; i++) {
@@ -23,18 +24,34 @@ function hemligtOrd(ord, antal, upprepning) {
       let kolla = /(\w).*\1/.test(tring);
 
       if (kolla == true) {
-        svara.push(tring);
+        remove.push(tring);
       }
     }
   }
 
   //Om list tom meddela att välja på nytt
-
   //Slumpa ett ord
 
-  //Säkerställ
+  if (remove.length > 0) {
+    const newLista = sortedList.filter((ord) => !remove.includes(ord));
 
-  return svara;
+    if (newLista == 0) {
+      return false;
+    } else {
+      const randomWord = newLista[Math.floor(Math.random() * newLista.length)];
+
+      return randomWord;
+    }
+  } else {
+    if (sortedList == 0) {
+      return false;
+    } else {
+      const randomWordSecond =
+        sortedList[Math.floor(Math.random() * sortedList.length)];
+
+      return randomWordSecond;
+    }
+  }
 }
 
 export default hemligtOrd;
