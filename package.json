@@ -1,0 +1,17 @@
+{
+  "name": "gissaordet",
+  "version": "1.0.0",
+  "main": "GissaOrdet.js",
+  "type": "module",
+  "scripts": {
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cross-env": "^7.0.3",
+    "install": "^0.13.0",
+    "jest": "^29.7.0"
+  }
+}
