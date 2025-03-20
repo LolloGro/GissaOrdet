@@ -12,7 +12,13 @@ function kontrolleraGissning(hemligt, gissat) {
     if (svar[i] == gissning[i]) {
       checkAnswer.push({ svar: "Correct", bokstav: gissning[i] });
     } else if (svar.includes(gissning[i])) {
-      checkAnswer.push({ svar: "Misplaced", bokstav: gissning[i] }); //iterera över bokstäver för att se om den förekommer fler än en gång? Kontrollera om finns fler och om första förekomsten
+      const kolla = gissning.filter((b) => b == gissning[i]);
+
+      if (kolla.length > 1) {
+        checkAnswer.push({ svar: "Incorrect", bokstav: gissning[i] });
+      } else {
+        checkAnswer.push({ svar: "Misplaced", bokstav: gissning[i] });
+      }
     } else {
       checkAnswer.push({ svar: "Incorrect", bokstav: gissning[i] });
     }

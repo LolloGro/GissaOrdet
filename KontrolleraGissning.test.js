@@ -17,13 +17,13 @@ describe("Kontroller om korrekt svar angetts", () => {
     expect(gissning).toBe(true);
   });
 
-  it("Retunerar svar om respektive bokstad är rätt, på fel plats eller fel", () => {
+  it("Retunerar svar om respektive bokstad är correct, misplaced eller incorrect", () => {
     const gissning = kontrolleraGissning("cykla", "hallå");
 
     expect(gissning).toEqual([
       { svar: "Incorrect", bokstav: "h" },
       { svar: "Misplaced", bokstav: "a" },
-      { svar: "Misplaced", bokstav: "l" }, //Ska egentligen vara inkorrekt
+      { svar: "Incorrect", bokstav: "l" },
       { svar: "Correct", bokstav: "l" },
       { svar: "Incorrect", bokstav: "å" },
     ]);
