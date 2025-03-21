@@ -13,11 +13,12 @@ function kontrolleraGissning(hemligt, gissat) {
       checkAnswer.push({ svar: "Correct", bokstav: gissning[i] });
     } else if (svar.includes(gissning[i])) {
       const kolla = gissning.filter((b) => b == gissning[i]);
+      const referens = svar.filter((a) => a == gissning[i]);
 
-      if (kolla.length > 1) {
-        checkAnswer.push({ svar: "Incorrect", bokstav: gissning[i] });
-      } else {
+      if (kolla.length <= referens.length) {
         checkAnswer.push({ svar: "Misplaced", bokstav: gissning[i] });
+      } else {
+        checkAnswer.push({ svar: "Incorrect", bokstav: gissning[i] });
       }
     } else {
       checkAnswer.push({ svar: "Incorrect", bokstav: gissning[i] });

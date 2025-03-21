@@ -2,8 +2,8 @@ import { describe, it, expect } from "@jest/globals";
 import kontrolleraGissning from "./KontrolleraGissning.js";
 
 //Definition av problem:
-// Spelaren ska gissning kontrolleras mot det hemliga order.
-// Om gidssning är korrekt har spelaren vunnit.
+// Spelarens gissning ska kontrolleras mot det hemliga order.
+// Om gissning är korrekt har spelaren vunnit.
 // Om det är fel ord ger spelet feedback som indikerar huruvida några bokstäver i det gissade ordet finns med i det hemliga ordet,
 //kontrollera om respektive bokstav finns på samma ställe i bägge arrayerna
 //Om inte kontrollera om array inkluderar angiven bokstad (include)
@@ -26,6 +26,18 @@ describe("Kontroller om korrekt svar angetts", () => {
       { svar: "Incorrect", bokstav: "l" },
       { svar: "Correct", bokstav: "l" },
       { svar: "Incorrect", bokstav: "å" },
+    ]);
+  });
+  it("Retunerar korrekt svar även om samma bokstav förekommer fler gånger än en", () => {
+    const gissning = kontrolleraGissning("ananas", "handla");
+
+    expect(gissning).toEqual([
+      { svar: "Incorrect", bokstav: "h" },
+      { svar: "Misplaced", bokstav: "a" },
+      { svar: "Misplaced", bokstav: "n" },
+      { svar: "Incorrect", bokstav: "d" },
+      { svar: "Incorrect", bokstav: "l" },
+      { svar: "Misplaced", bokstav: "a" },
     ]);
   });
 });
