@@ -1,12 +1,12 @@
 function hemligtOrd(ord, antal, upprepning) {
   const listaOrd = ord;
-  const antalBokstäver = antal;
-  const dubblaBokstäver = upprepning;
+  const valtAntal = antal;
+  const dubletter = upprepning;
 
   //Sortera utifrån längd på ord
 
   const sortedList = listaOrd.filter((ord) => {
-    if (ord.length == antalBokstäver) {
+    if (ord.length == valtAntal) {
       return ord;
     }
   });
@@ -15,7 +15,7 @@ function hemligtOrd(ord, antal, upprepning) {
 
   const remove = [];
 
-  if (dubblaBokstäver == false) {
+  if (dubletter == false) {
     for (let i = 0; i < sortedList.length; i++) {
       let tring = sortedList[i];
 

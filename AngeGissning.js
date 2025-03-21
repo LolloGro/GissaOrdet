@@ -1,8 +1,8 @@
-function angeGissning(gissatOrd, längd) {
+function angeGissning(gissatOrd, antal) {
   if (gissatOrd === "") {
     return false;
   }
-  if (gissatOrd.length !== längd) {
+  if (gissatOrd.length !== antal) {
     return false;
   }
   const gissat = gissatOrd.toLowerCase();

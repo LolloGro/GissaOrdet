@@ -8,7 +8,7 @@ import hemligtOrd from "./OrdAttGissa.js";
 //Om inget ord uppfyller kriterierna ska spelaren noteras om detta
 
 describe("Visa ord att gissa", () => {
-  it("Kontrollera att sorterar ord på längd", () => {
+  it("Kontrollera korrekt längd på sorterart ord", () => {
     const ord = [
       "ja",
       "nej",
