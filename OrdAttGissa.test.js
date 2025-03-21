@@ -40,4 +40,11 @@ describe("Visa ord att gissa", () => {
 
     expect(svar).toEqual("bort");
   });
+  it("Retunerar falskt om det inte finns några ord med valda parametrar", () => {
+    const ord = ["ja", "nej", "lite", "alla"];
+
+    const svar = hemligtOrd(ord, 5, false);
+
+    expect(svar).toBe(false);
+  });
 });
