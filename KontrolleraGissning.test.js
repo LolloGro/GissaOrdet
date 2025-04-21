@@ -21,23 +21,35 @@ describe("Kontroller om korrekt svar angetts", () => {
     const gissning = kontrolleraGissning("cykla", "hallå");
 
     expect(gissning).toEqual([
-      { svar: "Incorrect", bokstav: "h" },
-      { svar: "Misplaced", bokstav: "a" },
-      { svar: "Incorrect", bokstav: "l" },
-      { svar: "Correct", bokstav: "l" },
-      { svar: "Incorrect", bokstav: "å" },
+      { letter: "h", secret: "Incorrect" },
+      { letter: "a", secret: "Misplaced" },
+      { letter: "l", secret: "Incorrect" },
+      { letter: "l", secret: "Correct" },
+      { letter: "å", secret: "Incorrect" },
     ]);
   });
+
+  it("Retunerar svar om respektive bokstad är correct, misplaced eller incorrect", () => {
+    const gissning = kontrolleraGissning("lura", "alla");
+
+    expect(gissning).toEqual([
+      { letter: "a", secret: "Incorrect" },
+      { letter: "l", secret: "Misplaced" },
+      { letter: "l", secret: "Incorrect" },
+      { letter: "a", secret: "Correct" },
+    ]);
+  });
+
   it("Retunerar korrekt svar även om samma bokstav förekommer fler gånger än en", () => {
     const gissning = kontrolleraGissning("ananas", "handla");
 
     expect(gissning).toEqual([
-      { svar: "Incorrect", bokstav: "h" },
-      { svar: "Misplaced", bokstav: "a" },
-      { svar: "Misplaced", bokstav: "n" },
-      { svar: "Incorrect", bokstav: "d" },
-      { svar: "Incorrect", bokstav: "l" },
-      { svar: "Misplaced", bokstav: "a" },
+      { letter: "h", secret: "Incorrect" },
+      { letter: "a", secret: "Misplaced" },
+      { letter: "n", secret: "Misplaced" },
+      { letter: "d", secret: "Incorrect" },
+      { letter: "l", secret: "Incorrect" },
+      { letter: "a", secret: "Incorrect" },
     ]);
   });
 });

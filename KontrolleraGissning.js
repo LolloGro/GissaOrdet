@@ -6,26 +6,33 @@ function kontrolleraGissning(hemligt, gissat) {
   const svar = hemligt.split("");
   const gissning = gissat.split("");
 
-  const checkAnswer = [];
+  const checkIndex = [];
 
-  for (let i = 0; i < hemligt.length; i++) {
-    if (svar[i] == gissning[i]) {
-      checkAnswer.push({ svar: "Correct", bokstav: gissning[i] });
-    } else if (svar.includes(gissning[i])) {
-      const kolla = gissning.filter((b) => b == gissning[i]);
-      const referens = svar.filter((a) => a == gissning[i]);
+  const result = gissning.map((letter, index) => {
+    if (letter === svar[index]) {
+      const i = svar.indexOf(letter);
+      checkIndex.push(i);
+      return { letter: letter, secret: "Correct" };
+    } else {
+      return { letter: letter, secret: "Incorrect" };
+    }
+  });
 
-      if (kolla.length <= referens.length) {
-        checkAnswer.push({ svar: "Misplaced", bokstav: gissning[i] });
+  const feedback = result.map((res) => {
+    if (svar.includes(res.letter)) {
+      const j = svar.indexOf(res.letter);
+      if (checkIndex.includes(j)) {
+        return res;
       } else {
-        checkAnswer.push({ svar: "Incorrect", bokstav: gissning[i] });
+        checkIndex.push(j);
+        return { letter: res.letter, secret: "Misplaced" };
       }
     } else {
-      checkAnswer.push({ svar: "Incorrect", bokstav: gissning[i] });
+      return res;
     }
-  }
+  });
 
-  return checkAnswer;
+  return feedback;
 }
 
 export default kontrolleraGissning;
